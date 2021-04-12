@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  version: 0.9
+  title: Capacitated Vehicle Routing Problem Solver
+  license:
+      name:'Onur'
+      url:''
+paths:
+  /api/solveVehicleRoutingProblem:
+    post:
+      tags: ['CapacitatedVehicleRoutingProblem']
+      summary: Create routes with respect to duration and capacity constraints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                vehicles:
+                  type: array
+                  minLength: 1
+                  items:
+                    type: object
+                jobs:
+                  type: array
+                  minLength: 1
+                  items:
+                    type: object
+                matrix:
+                  type: array
+                  minLength: 1
+                  items:
+                    type: array
+                    items:
+                      type: number
+              required:
+                - vehicles
+                - jobs
+                - matrix
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: BAD REQUEST
